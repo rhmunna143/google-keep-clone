@@ -17,7 +17,7 @@ const Header = () => {
         className="border px-2 py-1 rounded"
       />
 
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-4 text-white">
 
         <DarkModeToggle />
 

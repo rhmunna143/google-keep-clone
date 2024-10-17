@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "../ConvexClientProvider";
 import Header from "../_components/Header";
 import "./globals.css";
+import Sidebar from "../_components/Sidebar";
 
 export default function RootLayout({
   children,
@@ -14,7 +15,10 @@ export default function RootLayout({
         <body>
           <ConvexClientProvider>
             <Header />
-            {children}
+            <div className="flex">
+              <Sidebar />
+              {children}
+            </div>
           </ConvexClientProvider>
         </body>
       </html>
