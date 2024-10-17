@@ -12,6 +12,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      daisyui: {
+        themes: ["light", "dark", "cupcake"],
+      },
     },
   },
   plugins: [require("daisyui")],
