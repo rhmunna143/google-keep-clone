@@ -1,11 +1,22 @@
 "use client";
 
 import { FiFile, FiTrash } from "react-icons/fi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MagicMotion } from "react-magic-motion";
+import useWindowSize from "../hooks/useWindowSize";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const windowSize = useWindowSize();
+
+  useEffect(() => {
+    if (windowSize.width !== 0 && windowSize.width <= 768) {
+      setIsCollapsed(true);
+    } else {
+      setIsCollapsed(false);
+    }
+  }, [windowSize.width]);
 
   return (
     // <aside className="w-64 p-4 bg-white dark:bg-gray-900 dark:text-white min-h-screen">
@@ -29,7 +40,7 @@ const Sidebar = () => {
           padding: "1rem",
           // margin: "1rem 0",
           // borderRadius: "0.65rem",
-          width: isCollapsed ? "4rem" : "20rem",
+          width: isCollapsed ? "3.5rem" : "20rem",
           fontWeight: "bold",
           display: "flex",
           flexDirection: "column",
@@ -41,7 +52,7 @@ const Sidebar = () => {
         <div
           style={{
             display: "flex",
-            gap: "0.5rem",
+            gap: "0.rem",
             alignItems: "center",
             justifyContent: "space-between",
           }}

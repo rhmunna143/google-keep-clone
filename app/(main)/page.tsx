@@ -4,14 +4,28 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import Image from "next/image";
 import NoteCard from "../_components/NoteCard";
+import { useEffect, useState } from "react";
+import useWindowSize from "../hooks/useWindowSize";
 
 export default function Home() {
   const notes = useQuery(api.notes.get);
 
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const windowSize = useWindowSize();
+
+  useEffect(() => {
+    if (windowSize.width !== 0 && windowSize.width <= 768) {
+      setIsCollapsed(true);
+    } else {
+      setIsCollapsed(false);
+    }
+  }, [windowSize.width]);
+
   return (
     <section className="flex flex-col">
       <main>
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 min-h-screen lg:p-10 md:p-8 p-4 gap-10 font-[family-name:var(--font-geist-sans)]">
+        <div className={`grid lg:grid-cols-${isCollapsed ? "5" : "4"} md:grid-cols-2 grid-cols-1 min-h-screen lg:p-10 md:p-8 p-4 gap-10 font-[family-name:var(--font-geist-sans)]`}>
           {notes?.map((note) => <NoteCard key={note._id} note={note} />)}
         </div>
       </main>
