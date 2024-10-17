@@ -1,11 +1,11 @@
 "use client";
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { useUser } from "@clerk/nextjs";
+// import { useUser } from "@clerk/nextjs";
 import DarkModeToggle from "./DarkModeToggle";
 
 const Header = () => {
-  const { isSignedIn, user } = useUser();
+  // const { isSignedIn, user } = useUser();
 
   return (
     <header className="p-4 flex justify-between bg-gray-100 dark:bg-gray-800">
