@@ -3,6 +3,7 @@
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import Image from "next/image";
+import NoteCard from "../_components/NoteCard";
 
 export default function Home() {
   const notes = useQuery(api.notes.get);
@@ -10,13 +11,8 @@ export default function Home() {
   return (
     <section className="flex flex-col">
       <main>
-        <div className="grid grid-cols-4 items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-          {notes?.map(({ _id, text }) => (
-            <div key={_id}>
-              <span>{_id}</span>
-              <p>{text}</p>
-            </div>
-          ))}
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 min-h-screen lg:p-10 md:p-8 p-4 gap-10 font-[family-name:var(--font-geist-sans)]">
+          {notes?.map((note) => <NoteCard key={note._id} note={note} />)}
         </div>
       </main>
 
