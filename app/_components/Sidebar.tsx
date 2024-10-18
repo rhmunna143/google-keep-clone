@@ -47,7 +47,7 @@ const Sidebar = () => {
             justifyContent: "space-between",
           }}
         >
-          {!isCollapsed && <h4 style={{ margin: 0 }} className="hidden md:block">Keep taking notes</h4>}
+          {!isCollapsed && <h4 style={{ margin: 0 }} className="hidden md:block">Keep notes</h4>}
 
           <button
             style={{ cursor: "pointer", padding: 0, border: 0 }}
