@@ -32,7 +32,7 @@ export default function Home() {
           {notes
             ?.filter((item) => item.userId === loadedUserId)
             ?.sort(
-              (a, b) => new Date(b._creationTime) - new Date(a._creationTime)
+              (a, b) => new Date(b._creationTime).getTime() - new Date(a._creationTime).getTime()
             ) // Sort by _creationTime (newest first)
             ?.map((note) => <NoteCard key={note._id} note={note} />)}
         </div>

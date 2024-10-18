@@ -1,13 +1,13 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-import * as React from "react";
 
-const useUserId: React.FunctionComponent = () => {
+const useUserId = () => {
   const { user } = useUser();
-  const [loadedUserId, setLoadedUserId] = React.useState("");
+  const [loadedUserId, setLoadedUserId] = useState("");
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (user?.id) {
       setLoadedUserId(user.id);
     }

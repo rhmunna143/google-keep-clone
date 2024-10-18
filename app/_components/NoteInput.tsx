@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { api } from "@/convex/_generated/api";
+import { api } from "@/convex/_generated/api"; // Ensure this path is correct
 import { useMutation } from "convex/react";
-import useUserId from "../_hooks/useUserId";
+import useUserId from "../hooks/useUserId";
 
 const NoteInput = () => {
-  const addNoteMutation = useMutation(api.notes.addNote);
+  // Call the mutation using the correct reference from api
+  const addNoteMutation = useMutation(api.notes.addNote); // Correct usage of useMutation
   const userId = useUserId();
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [note, setNote] = useState({ title: "", text: "" });
@@ -17,7 +18,7 @@ const NoteInput = () => {
   const handleAddNote = async () => {
     if (note.text.trim() || note.title.trim()) {
       // Ensure the note is not empty
-      await addNoteMutation({ ...note, userId });
+      await addNoteMutation({ title: note.title, text: note.text, userId });
     }
     setNote({ title: "", text: "" }); // Clear the input fields
     setIsExpanded(false); // Collapse the input area
@@ -48,7 +49,7 @@ const NoteInput = () => {
 
   return (
     <div
-      className="border rounded-md p-2 md:p-4 w-80 md:w-[600px] mx-auto shadow-md"
+      className="border rounded-md p-2 md:p-4 w- md:w-[600px] mx-auto shadow-md"
       onBlur={handleBlur} // Save the note when the entire component loses focus
       ref={containerRef}
       tabIndex={-1} // Ensure that the component can track focus
