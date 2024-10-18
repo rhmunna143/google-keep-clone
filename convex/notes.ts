@@ -1,6 +1,5 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
-import { Id } from "./_generated/dataModel";
 
 // This is a Convex API file. You can define your API endpoints here.
 // You can define your API endpoints here.
@@ -8,11 +7,21 @@ import { Id } from "./_generated/dataModel";
 
 // get is a query endpoint that returns a list of notes
 export const get = query({
-  args: { userId: v.string() },
-  handler: async (ctx, args) => {
-    return await ctx.db
+  args: {},
+  handler: async (ctx) => {
+    return await ctx.db.query("notes").collect();
+  },
+});
+
+export const getUserNotes = query({
+  args: v.object({
+    userId: v.string(), // Validate that userId is a string
+  }),
+  handler: async ({ db }, { userId }) => {
+    // Query to fetch notes for the given userId
+    return await db
       .query("notes")
-      .filter((q) => q.eq(q.field("userId"), args.userId))
+      .filter((q) => q.eq(q.field("userId"), userId))
       .collect();
   },
 });

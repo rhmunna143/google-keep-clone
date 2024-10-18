@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import Image from "next/image";
@@ -7,8 +8,15 @@ import NoteCard from "../_components/NoteCard";
 import { useUser } from "@clerk/nextjs";
 
 export default function Home() {
-  const {} = useUser();
+  const { user } = useUser();
+  const [loadedUserId, setLoadedUserId] = React.useState("");
   const notes = useQuery(api.notes.get);
+
+  React.useEffect(() => {
+    if (user?.id) {
+      setLoadedUserId(user.id);
+    }
+  }, [user, setLoadedUserId]);
 
   return (
     <section className="flex flex-col">
@@ -16,7 +24,9 @@ export default function Home() {
         <div
           className={`grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 min-h-screen lg:p-10 md:p-8 p-4 gap-10 font-[family-name:var(--font-geist-sans)]`}
         >
-          {notes?.map((note) => <NoteCard key={note._id} note={note} />)}
+          {notes
+            ?.filter((item) => item.userId === loadedUserId)
+            ?.map((note) => <NoteCard key={note._id} note={note} />)}
         </div>
       </main>
 
