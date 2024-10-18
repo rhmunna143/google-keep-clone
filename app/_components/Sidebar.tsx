@@ -30,7 +30,7 @@ const Sidebar = () => {
           padding: "1rem",
           // margin: "1rem 0",
           // borderRadius: "0.65rem",
-          width: isCollapsed ? "5rem" : "20rem",
+          width: isCollapsed ? "4rem" : "20rem",
           fontWeight: "bold",
           display: "flex",
           flexDirection: "column",
