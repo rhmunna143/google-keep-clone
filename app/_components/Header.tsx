@@ -14,7 +14,7 @@ const Header = () => {
       <input
         type="text"
         placeholder="Search notes..."
-        className="border px-2 py-1 rounded"
+        className="border w-[100px] md:w-1/2 px-2 py-1 rounded"
       />
 
       <div className="flex items-center space-x-4 text-white">

@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <section className="flex flex-col">
-      <div className="note-input mt-8">
+      <div className="note-input mt-2 md:mt-8">
         <NoteInput />
       </div>
 
