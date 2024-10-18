@@ -24,7 +24,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
       onMouseLeave={() => setIsShowOptions(false)}
     >
       <input
-        defaultValue={note?.title}
+        defaultValue={note?.title ? note?.title : "Untitled"}
         className="w-full text-lg font-medium px-4 py-1 rounded-t-md"
       />
 

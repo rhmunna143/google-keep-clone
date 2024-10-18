@@ -3,7 +3,7 @@ import NoteInput from "@/app/_components/NoteInput";
 
 const NewNotePage: React.FunctionComponent = () => {
   return (
-    <div>
+    <div className="w-fit mx-auto flex flex-col items-center justify-center">
       <NoteInput />
     </div>
   );
