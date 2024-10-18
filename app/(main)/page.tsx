@@ -4,8 +4,10 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import Image from "next/image";
 import NoteCard from "../_components/NoteCard";
+import { useUser } from "@clerk/nextjs";
 
 export default function Home() {
+  const {} = useUser();
   const notes = useQuery(api.notes.get);
 
   return (
