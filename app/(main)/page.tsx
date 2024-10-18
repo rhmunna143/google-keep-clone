@@ -16,7 +16,7 @@ export default function Home() {
     if (user?.id) {
       setLoadedUserId(user.id);
     }
-  }, [user, setLoadedUserId]);
+  }, [user]);
 
   return (
     <section className="flex flex-col">
@@ -26,6 +26,9 @@ export default function Home() {
         >
           {notes
             ?.filter((item) => item.userId === loadedUserId)
+            ?.sort(
+              (a, b) => new Date(b._creationTime) - new Date(a._creationTime)
+            ) // Sort by _creationTime (newest first)
             ?.map((note) => <NoteCard key={note._id} note={note} />)}
         </div>
       </main>

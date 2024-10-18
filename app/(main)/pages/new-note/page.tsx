@@ -1,11 +1,10 @@
 import * as React from "react";
+import NoteInput from "@/app/_components/NoteInput";
 
-interface INewNotePageProps {}
-
-const NewNotePage: React.FunctionComponent<INewNotePageProps> = (props) => {
+const NewNotePage: React.FunctionComponent = () => {
   return (
     <div>
-      <h1>New Note Page</h1>
+      <NoteInput />
     </div>
   );
 };
