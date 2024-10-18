@@ -6,6 +6,7 @@ import { api } from "../../convex/_generated/api";
 import Image from "next/image";
 import NoteCard from "../_components/NoteCard";
 import { useUser } from "@clerk/nextjs";
+import NoteInput from "../_components/NoteInput";
 
 export default function Home() {
   const { user } = useUser();
@@ -20,6 +21,10 @@ export default function Home() {
 
   return (
     <section className="flex flex-col">
+      <div className="note-input mt-8">
+        <NoteInput />
+      </div>
+
       <main>
         <div
           className={`grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 min-h-screen lg:p-10 md:p-8 p-4 gap-10 font-[family-name:var(--font-geist-sans)]`}
