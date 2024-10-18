@@ -19,7 +19,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
 
   return (
     <div
-      className="border rounded-md p-2 md:p-4 w-full relative"
+      className="border rounded-md p-2 md:p-4 w-full relative h-fit"
       onMouseEnter={() => setIsShowOptions(true)}
       onMouseLeave={() => setIsShowOptions(false)}
     >
