@@ -49,7 +49,7 @@ const NoteInput = () => {
 
   return (
     <div
-      className="border rounded-md p-2 md:p-4 w- md:w-[600px] mx-auto shadow-md"
+      className="border rounded-md p-2 md:p-4 w-fit md:w-[600px] mx-auto shadow-md"
       onBlur={handleBlur} // Save the note when the entire component loses focus
       ref={containerRef}
       tabIndex={-1} // Ensure that the component can track focus

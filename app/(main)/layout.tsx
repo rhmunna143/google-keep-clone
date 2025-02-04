@@ -17,7 +17,7 @@ export default function RootLayout({
             <Header />
             <div className="flex">
               <Sidebar />
-              {children}
+              <div className="w-fit mx-auto">{children}</div>
             </div>
           </ConvexClientProvider>
         </body>

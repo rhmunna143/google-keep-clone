@@ -1,7 +1,10 @@
-// "use client";
+"use client";
+
+// import { use } from "react";
 
 // import { useQuery } from "convex/react";
 // import React from "react";
+// import { api } from "../../../../convex/_generated/api";
 
 // interface Note {
 //   _id: string;
@@ -14,7 +17,7 @@
 //   note: Note;
 // }
 
-// const TrashPage: React.FC<TrashPageProps> = () => {
+// //   const trashNotes = useQuery(api.notes.getDeletedNotes);
 //   const trashNotes = useQuery(getDeletedNotes);
 
 //   return (
@@ -33,3 +36,15 @@
 // };
 
 // export default TrashPage;
+
+import * as React from "react";
+
+const TrashPage: React.FunctionComponent = () => {
+  return (
+    <>
+      <div>Trash page</div>
+    </>
+  );
+};
+
+export default TrashPage;

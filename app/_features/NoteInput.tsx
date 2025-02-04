@@ -1,13 +1,17 @@
 "use client";
 
-import { addNote } from "@/convex/notes";
+import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
 
 const NoteInput = () => {
-  const addNoteMutation = useMutation(addNote);
+  const addNoteMutation = useMutation(api.notes.addNote);
 
-  const handleAddNote = async (noteContent) => {
-    await addNoteMutation({ content: noteContent });
+  const handleAddNote = async (noteContent: string) => {
+    await addNoteMutation({
+      userId: "default", // Replace with actual user ID
+      title: "",
+      text: noteContent
+    });
   };
 
   return (
@@ -16,7 +20,7 @@ const NoteInput = () => {
         type="text"
         placeholder="Add a note..."
         onKeyPress={(e) => {
-          if (e.key === "Enter") handleAddNote(e.target.value);
+          if (e.key === "Enter") handleAddNote((e.target as HTMLInputElement).value);
         }}
       />
     </div>
